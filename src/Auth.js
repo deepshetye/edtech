@@ -1,11 +1,9 @@
 import React, { useEffect, useState, createContext } from "react";
-import { firebaseApp } from "./firebase";
-import firebase from "firebase";
+import { firebaseApp, db, auth } from "./firebase";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const db = firebase.firestore();
   const [currentUser, setCurrentUser] = useState([]);
   const [getFireAuthUser, setGetFireAuthUser] = useState(false);
   const [currentUserData, setCurrentUserData] = useState([]);
@@ -22,7 +20,7 @@ export const AuthProvider = ({ children }) => {
   function checkData() {
     var docRef = db
       .collection("userPreference")
-      .doc(firebase.auth().currentUser.uid);
+      .doc(auth.currentUser.uid);
     docRef.get().then((doc) => {
       if (doc.exists) {
         console.log("Old user found in Auth");

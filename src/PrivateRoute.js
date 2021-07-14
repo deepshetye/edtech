@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 import { AuthContext } from "./Auth";
 import Login from "./components/Login";
 import Select from "react-select";
-import firebase from "firebase";
+import { db, auth } from './firebase'
 
 const yearOptions = [
   { value: "FIRST", label: "First" },
@@ -13,7 +13,7 @@ const yearOptions = [
 ];
 
 const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
-  const db = firebase.firestore();
+
   const {
     currentUser,
     dataFetched,
@@ -68,7 +68,7 @@ const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
     ) {
       setCurrentUserData([selectedCollege, selectedBranch, selectedYear]);
       db.collection("userPreference")
-        .doc(firebase.auth().currentUser.uid)
+        .doc(auth.currentUser.uid)
         .set({
           college: selectedCollege,
           branch: selectedBranch,

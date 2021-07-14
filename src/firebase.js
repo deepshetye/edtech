@@ -5,12 +5,12 @@ require("firebase/firestore");
 // INITIALIZE FIREBASE
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA4YHApJExe9AiWLCrtJ1e56zuKxtmnZgY",
-  authDomain: "edtech-faf14.firebaseapp.com",
-  projectId: "edtech-faf14",
-  storageBucket: "edtech-faf14.appspot.com",
-  messagingSenderId: "263778515423",
-  appId: "1:263778515423:web:abf4f634bd711b457f6c6a",
+  apiKey: `${process.env.REACT_APP_FIREBASE_API_KEY}`,
+  authDomain: `${process.env.REACT_APP_FIREBASE_AUTH_DOMAIN}`,
+  projectId: `${process.env.REACT_APP_PROJECT_ID}`,
+  storageBucket: `${process.env.REACT_APP_STORAGE_BUCKET}`,
+  messagingSenderId: `${process.env.REACT_APP_MESSAGING_SENDER_ID}`,
+  appId: `${process.env.REACT_APP_FIREBASE_APP_ID}`,
 };
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
