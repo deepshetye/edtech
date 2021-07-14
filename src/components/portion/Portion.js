@@ -7,7 +7,7 @@ const Portion = () => {
 
   const getSubjects = () => {
     axios
-      .get("https://edtech-dj.herokuapp.com/api/subject-list/", {
+      .get(`${REACT_APP_API_URL}subject-list/`, {
         params: {
           page: 1,
           page_size: 100,
@@ -27,7 +27,7 @@ const Portion = () => {
 
   function getPortionLink({ sub }) {
     axios
-      .get(`https://edtech-dj.herokuapp.com/api/portion-list/?subject=MA100`, {
+      .get(`${REACT_APP_API_URL}portion-list/?subject=MA100`, {
         params: {
           page: 1,
           page_size: 100,
@@ -81,52 +81,3 @@ const Portion = () => {
 };
 
 export default Portion;
-
-// CLASS COMPONENT
-
-// export default class Portion extends React.Component {
-
-//     state = {
-//         loading: true,
-//         subjects: []
-//     }
-
-//     async componentDidMount() {
-//       const res = await axios
-//       .get("https://edtech-dj.herokuapp.com/api/subject-list/", {
-//         params: {
-//           page: 1,
-//           page_size: 100,
-//         },
-//       })
-//       const results = res.data.results;
-//       this.setState({ subjects: results, loading: false});
-//   }
-
-//   render() {
-
-//     if(this.state.loading){
-//         return <div className="main_content_body">
-//         <h1 style={{
-//           display: "flex",
-//           justifyContent: 'center',
-//           height: 'inherit',
-//           alignItems: 'center',
-//         }}>
-//           Loading.....
-//         </h1>
-//       </div>
-//     }
-
-//     return(
-//         <div className="main_content_body">
-//             {this.state.subjects.map(subject => (
-//                 <div className="gd-fs">
-//                     <i className='bx bxs-folder'></i>
-//                     <span className="gd-fs-n" style={{marginLeft: "10px"}}>{subject.subject_code}</span>
-//                 </div>
-//             ))}
-//         </div>
-//     )
-//   }
-// }

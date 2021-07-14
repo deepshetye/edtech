@@ -19,7 +19,7 @@ const Textbook = () => {
 
   const getSubjects = () => {
     axios
-      .get("https://edtech-dj.herokuapp.com/api/subject-list/", {
+      .get(`${REACT_APP_API_URL}subject-list/`, {
         params: {
           page: 1,
           page_size: 100,
@@ -40,7 +40,7 @@ const Textbook = () => {
   const getBooks = (key) => {
     axios
       .get(
-        `https://edtech-dj.herokuapp.com/api/textbook-list/?subject=${key}`,
+        `${REACT_APP_API_URL}textbook-list/?subject=${key}`,
         {
           params: {
             page: 1,

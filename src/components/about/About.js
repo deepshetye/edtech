@@ -7,7 +7,7 @@ const About = () => {
   const getSubjects = () => {
     axios
       .get(
-        "https://edtech-dj.herokuapp.com/api/college-list/?college_code=NITG",
+        `${process.env.REACT_APP_API_URL}college-list/?college_code=NITG`,
         {
           params: {
             page: 1,

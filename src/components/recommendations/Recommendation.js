@@ -9,7 +9,7 @@ export default class Recommendation extends React.Component {
 
   async componentDidMount() {
     const res = await axios.get(
-      "https://edtech-dj.herokuapp.com/api/subject-list/",
+      `${REACT_APP_API_URL}subject-list/`,
       {
         params: {
           page: 1,

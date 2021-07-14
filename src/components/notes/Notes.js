@@ -19,7 +19,7 @@ const Notes = () => {
 
   const getSubjects = () => {
     axios
-      .get("https://edtech-dj.herokuapp.com/api/subject-list/", {
+      .get(`${REACT_APP_API_URL}subject-list/`, {
         params: {
           page: 1,
           page_size: 100,
@@ -40,7 +40,7 @@ const Notes = () => {
   const getBooks = (key) => {
     axios
       .get(
-        `https://edtech-dj.herokuapp.com/api/material-list/?subject=${key}`,
+        `${REACT_APP_API_URL}material-list/?subject=${key}`,
         {
           params: {
             page: 1,

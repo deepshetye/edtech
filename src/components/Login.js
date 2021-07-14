@@ -5,15 +5,13 @@ import {
   facebookProvider,
   githubProvider,
   twitterProvider,
-  firebaseApp,
+  db
 } from "../firebase";
 import { FaFacebook, FaGithub, FaGooglePlus } from "react-icons/fa";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { AuthContext } from "../Auth";
-import firebase from "firebase";
 
 const Login = () => {
-  const db = firebase.firestore();
   const {
     currentUser,
     currentUserData,
@@ -30,7 +28,7 @@ const Login = () => {
     if (currentUser != null) {
       var docRef = db
         .collection("userPreference")
-        .doc(firebase.auth().currentUser.uid);
+        .doc(auth.currentUser.uid);
 
       docRef
         .get()
