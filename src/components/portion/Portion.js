@@ -7,7 +7,7 @@ const Portion = () => {
 
   const getSubjects = () => {
     axios
-      .get(`${REACT_APP_API_URL}subject-list/`, {
+      .get(`${process.env.REACT_APP_API_URL}subject-list/`, {
         params: {
           page: 1,
           page_size: 100,
@@ -27,7 +27,7 @@ const Portion = () => {
 
   function getPortionLink({ sub }) {
     axios
-      .get(`${REACT_APP_API_URL}portion-list/?subject=MA100`, {
+      .get(`${process.env.REACT_APP_API_URL}portion-list/?subject=MA100`, {
         params: {
           page: 1,
           page_size: 100,

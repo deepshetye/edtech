@@ -19,7 +19,7 @@ const Notes = () => {
 
   const getSubjects = () => {
     axios
-      .get(`${REACT_APP_API_URL}subject-list/`, {
+      .get(`${process.env.REACT_APP_API_URL}subject-list/`, {
         params: {
           page: 1,
           page_size: 100,
@@ -40,7 +40,7 @@ const Notes = () => {
   const getBooks = (key) => {
     axios
       .get(
-        `${REACT_APP_API_URL}material-list/?subject=${key}`,
+        `${process.env.REACT_APP_API_URL}material-list/?subject=${key}`,
         {
           params: {
             page: 1,
