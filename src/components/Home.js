@@ -12,6 +12,8 @@ import Textbook from "./textbook/Textbook";
 import Timetable from "./timetable/Timetable";
 
 const Home = () => {
+  const { path, url } = useRouteMatch();
+
   return (
     <div className="home_screen">
       {
@@ -19,28 +21,28 @@ const Home = () => {
           <TopNavBar />
           <NavBar />
           <Switch>
-            <Route exact path="/edtech">
+            <Route exact path={`${url}/`}>
               <Timetable />
             </Route>
-            <Route path="/edtech/portion">
+            <Route path={`${url}/portion`}>
               <Portion />
             </Route>
-            <Route path="/edtech/textbook">
+            <Route path={`${url}/textbook`}>
               <Textbook />
             </Route>
-            <Route path="/edtech/notes">
+            <Route path={`${url}/notes`}>
               <Notes />
             </Route>
-            <Route path="/edtech/recommendation">
+            <Route path={`${url}/recommendation`}>
               <Recommendation />
             </Route>
-            <Route path="/edtech/faculty">
+            <Route path={`${url}/faculty`}>
               <People />
             </Route>
-            <Route path="/edtech/about">
+            <Route path={`${url}/about`}>
               <About />
             </Route>
-            <Route path="/edtech/user">
+            <Route path={`${url}/user`}>
               <div className="main_content_body">HI</div>
             </Route>
           </Switch>
