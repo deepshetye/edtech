@@ -10,7 +10,7 @@ const App = () => {
     <AuthProvider>
       <Router>
         <div className="App">
-          <PrivateRoute path="/edtech" component={Home} />
+          <PrivateRoute path="/" component={Home} />
         </div>
       </Router>
     </AuthProvider>

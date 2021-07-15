@@ -1,12 +1,10 @@
 import React, { useContext } from "react";
-import { BrowserRouter as Router, Link, useRouteMatch } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import { AuthContext } from "../Auth";
 import { firebaseApp } from "../firebase";
 import logo from "../whitelogo.png";
 
 const NavBar = () => {
-  const { path, url } = useRouteMatch();
-
   const {
     setCurrentUser,
     setGetFireAuthUser,
@@ -73,56 +71,56 @@ const NavBar = () => {
 
       <ul className="nav_list">
         <li>
-          <Link to={`${url}/`} className="nav_link active" onClick={colorLink}>
+          <Link to="/edtech" className="nav_link active" onClick={colorLink}>
             <i className="bx bx-table"></i>
             <span className="nav_name">Timetable</span>
           </Link>
           <span className="tooltip">Timetable</span>
         </li>
         <li>
-          <Link to={`${url}/portion`} className="nav_link" onClick={colorLink}>
+          <Link to="/portion" className="nav_link" onClick={colorLink}>
             <i className="bx bx-list-check"></i>
             <span className="nav_name">Portion</span>
           </Link>
           <span className="tooltip">Portion</span>
         </li>
         <li>
-          <Link to={`${url}/textbook`} className="nav_link" onClick={colorLink}>
+          <Link to="/textbook" className="nav_link" onClick={colorLink}>
             <i className="bx bxs-book"></i>
             <span className="nav_name">TextBook</span>
           </Link>
           <span className="tooltip">TextBook</span>
         </li>
         <li>
-          <Link to={`${url}/notes`} className="nav_link" onClick={colorLink}>
+          <Link to="/notes" className="nav_link" onClick={colorLink}>
             <i className="bx bx-book-open"></i>
             <span className="nav_name">Notes</span>
           </Link>
           <span className="tooltip">Notes</span>
         </li>
         <li>
-          <Link to={`${url}/recommendation`} className="nav_link" onClick={colorLink}>
+          <Link to="/recommendation" className="nav_link" onClick={colorLink}>
             <i className="bx bx-library"></i>
             <span className="nav_name">Recommendation</span>
           </Link>
           <span className="tooltip">Recommendation</span>
         </li>
         <li>
-          <Link to={`${url}/faculty`} className="nav_link" onClick={colorLink}>
+          <Link to="/faculty" className="nav_link" onClick={colorLink}>
             <i className="bx bx-group"></i>
             <span className="nav_name">People</span>
           </Link>
           <span className="tooltip">People</span>
         </li>
         <li>
-          <Link to={`${url}/about`} className="nav_link" onClick={colorLink}>
+          <Link to="/about" className="nav_link" onClick={colorLink}>
             <i className="bx bxs-school"></i>
             <span className="nav_name">About</span>
           </Link>
           <span className="tooltip">About</span>
         </li>
         <li>
-          <Link to={`${url}/user`} className="nav_link" onClick={colorLink}>
+          <Link to="/user" className="nav_link" onClick={colorLink}>
             <i className="bx bx-user"></i>
             <span className="nav_name">User</span>
           </Link>

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, useRouteMatch } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "../App.css";
 import About from "./about/About";
 import People from "./people/People";
@@ -12,8 +12,6 @@ import Textbook from "./textbook/Textbook";
 import Timetable from "./timetable/Timetable";
 
 const Home = () => {
-  const { path, url } = useRouteMatch();
-
   return (
     <div className="home_screen">
       {
@@ -21,29 +19,29 @@ const Home = () => {
           <TopNavBar />
           <NavBar />
           <Switch>
-            <Route exact path={`${url}/`}>
+            <Route exact path="/edtech">
               <Timetable />
             </Route>
-            <Route path={`${url}/portion`}>
+            <Route path="/portion">
               <Portion />
             </Route>
-            <Route path={`${url}/textbook`}>
+            <Route path="/textbook">
               <Textbook />
             </Route>
-            <Route path={`${url}/notes`}>
+            <Route path="/notes">
               <Notes />
             </Route>
-            <Route path={`${url}/recommendation`}>
+            <Route path="/recommendation">
               <Recommendation />
             </Route>
-            <Route path={`${url}/faculty`}>
+            <Route path="/faculty">
               <People />
             </Route>
-            <Route path={`${url}/about`}>
+            <Route path="/about">
               <About />
             </Route>
-            <Route path={`${url}/user`}>
-              <div className="main_content_body">HI</div>
+            <Route path="/user">
+              <div>HI</div>
             </Route>
           </Switch>
         </Router>
