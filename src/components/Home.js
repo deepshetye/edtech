@@ -19,25 +19,25 @@ const Home = () => {
           <TopNavBar />
           <NavBar />
           <Switch>
-            <Route path="/portion">
+            <Route path="/edtech/portion">
               <Portion />
             </Route>
-            <Route path="/textbook">
+            <Route path="/edtech/textbook">
               <Textbook />
             </Route>
-            <Route path="/notes">
+            <Route path="/edtech/notes">
               <Notes />
             </Route>
-            <Route path="/recommendation">
+            <Route path="/edtech/recommendation">
               <Recommendation />
             </Route>
-            <Route path="/faculty">
+            <Route path="/edtech/faculty">
               <People />
             </Route>
-            <Route path="/about">
+            <Route path="/edtech/about">
               <About />
             </Route>
-            <Route path="/user">
+            <Route path="/edtech/user">
               <div className="main_content_body">HI</div>
             </Route>
             <Route path="/">
