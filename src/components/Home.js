@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import "../App.css";
 import About from "./about/About";
 import People from "./people/People";
@@ -19,7 +19,7 @@ const Home = () => {
           <TopNavBar />
           <NavBar />
           <Switch>
-            <Route exact path="/edtech">
+            <Route exact path="/">
               <Timetable />
             </Route>
             <Route path="/portion">

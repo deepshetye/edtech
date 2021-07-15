@@ -71,7 +71,7 @@ const NavBar = () => {
 
       <ul className="nav_list">
         <li>
-          <Link to="/edtech" className="nav_link active" onClick={colorLink}>
+          <Link to="/" className="nav_link active" onClick={colorLink}>
             <i className="bx bx-table"></i>
             <span className="nav_name">Timetable</span>
           </Link>
