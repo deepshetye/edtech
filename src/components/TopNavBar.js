@@ -101,7 +101,7 @@ const TopNavBar = () => {
                 <span className="nav_name">About</span>
               </Link>
             </li>
-            <li>
+            <li className="category-list-item">
               <Link to="/user" className="nav_link">
                 <i className="bx bx-user"></i>
                 <span className="nav_name">User</span>
