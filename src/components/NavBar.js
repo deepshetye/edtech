@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link, useRouteMatch } from "react-router-dom";
 import { AuthContext } from "../Auth";
 import { firebaseApp } from "../firebase";
 import logo from "../whitelogo.png";
