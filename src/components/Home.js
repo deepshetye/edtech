@@ -10,6 +10,7 @@ import Portion from "./portion/Portion";
 import Recommendation from "./recommendations/Recommendation";
 import Textbook from "./textbook/Textbook";
 import Timetable from "./timetable/Timetable";
+import User from "./user/User";
 
 const Home = () => {
   return (
@@ -41,7 +42,7 @@ const Home = () => {
               <About />
             </Route>
             <Route path="/user">
-              <div>HI</div>
+              <User />
             </Route>
           </Switch>
         </Router>

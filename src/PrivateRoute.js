@@ -33,7 +33,7 @@ const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
   } = useContext(AuthContext);
 
   function onCollegeInputChange(value) {
-    setSelectedCollege(value.value);
+    setSelectedCollege(value);
 
     var docRef = db.collection("branches").doc(value.value);
     docRef
@@ -53,11 +53,11 @@ const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
   }
 
   function onBranchInputChange(value) {
-    setSelectedBranch(value.value);
+    setSelectedBranch(value);
   }
 
   function onYearInputChange(value) {
-    setSelectedYear(value.value);
+    setSelectedYear(value);
   }
 
   function onSubmitButton() {

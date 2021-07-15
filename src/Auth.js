@@ -18,21 +18,34 @@ export const AuthProvider = ({ children }) => {
   const [selectedYear, setSelectedYear] = useState(null);
 
   function checkData() {
-    var docRef = db
-      .collection("userPreference")
-      .doc(auth.currentUser.uid);
+    var docRef = db.collection("userPreference").doc(auth.currentUser.uid);
     docRef.get().then((doc) => {
       if (doc.exists) {
         console.log("Old user found in Auth");
         setCurrentUserData([
-          `${doc.data().college}`,
-          `${doc.data().branch}`,
-          `${doc.data().year}`,
+          {
+            label: `${doc.data().college.label}`,
+            value: `${doc.data().college.value}`,
+          },
+          {
+            label: `${doc.data().branch.label}`,
+            value: `${doc.data().branch.value}`,
+          },
+          {
+            label: `${doc.data().year.label}`,
+            value: `${doc.data().year.value}`,
+          },
         ]);
-        if (currentUserData != null) {
-          setDataFetched(true);
-          setGetFireAuthUser(true);
-          return;
+        
+        if (currentUserData !== [] || currentUserData.length !== 0 || currentUserData !== undefined || currentUserData !== null) {
+          setSelectedCollege(currentUserData[0]);
+          setSelectedBranch(currentUserData[1]);
+          setSelectedYear(currentUserData[2]);
+          if(selectedCollege !== null || selectedCollege !== [] || selectedCollege !== undefined || selectedBranch !== null || selectedBranch !== [] || selectedBranch !== undefined || selectedYear !== null || selectedYear !== [] || selectedYear !== undefined ){
+            setGetFireAuthUser(true);
+                setDataFetched(true);
+
+          }
         }
       } else {
         console.log("New User in auth");
@@ -53,13 +66,17 @@ export const AuthProvider = ({ children }) => {
   }
 
   useEffect(() => {
+    // setDataFetched(true);
+  }, [currentUserData])
+
+  useEffect(() => {
     firebaseApp.auth().onAuthStateChanged((user) => {
       setCurrentUser(user);
-      if (currentUser != null) {
+      if (currentUser != null) {  
         checkData();
       }
     });
-  }, []);
+  },[]);
 
   return (
     <AuthContext.Provider

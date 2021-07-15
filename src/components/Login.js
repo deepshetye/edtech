@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import {
   auth,
   googleProvider,
   facebookProvider,
   githubProvider,
   twitterProvider,
-  db
+  db,
 } from "../firebase";
 import { FaFacebook, FaGithub, FaGooglePlus } from "react-icons/fa";
 import { AiFillTwitterCircle } from "react-icons/ai";
@@ -24,35 +24,81 @@ const Login = () => {
     collegeOptions,
   } = useContext(AuthContext);
 
-  const getData = () => {
-    if (currentUser != null) {
-      var docRef = db
-        .collection("userPreference")
-        .doc(auth.currentUser.uid);
-
-      docRef
-        .get()
-        .then((doc) => {
-          if (doc.exists) {
-            console.log("Old user in private route");
-            setCurrentUserData([
-              `${doc.data().college}`,
-              `${doc.data().branch}`,
-              `${doc.data().year}`,
-            ]);
-            if (currentUserData != null) {
-              setDataFetched(true);
-              setGetFireAuthUser(true);
-            }
-          } else {
-            setGetFireAuthUser(true);
-          }
-        })
-        .catch((error) => {
-          console.log("Error getting document:", error);
+  useEffect(() => {
+    // console.log(collegeOptions)
+    if(collegeOptions[0] == undefined){
+      db.collection("colleges")
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          collegeOptions.push(doc.data());
         });
+      })
+      .then(() => {
+        
+      });
     }
-  };
+  }, [])
+
+  // const getData = () => {
+  //   var docRef = db.collection("userPreference").doc(auth.currentUser.uid);
+  //   docRef.get().then((doc) => {
+  //     if (doc.exists) {
+  //       console.log("Old user found in Auth");
+  //       setCurrentUserData([
+  //         {
+  //           label: `${doc.data().college.label}`,
+  //           value: `${doc.data().college.value}`,
+  //         },
+  //         {
+  //           label: `${doc.data().branch.label}`,
+  //           value: `${doc.data().branch.value}`,
+  //         },
+  //         {
+  //           label: `${doc.data().year.label}`,
+  //           value: `${doc.data().year.value}`,
+  //         },
+  //       ]);
+  //       if (
+  //         currentUserData !== [] ||
+  //         currentUserData !== undefined ||
+  //         currentUserData !== null
+  //       ) {
+  //         setSelectedCollege(currentUserData[0]);
+  //         setSelectedBranch(currentUserData[1]);
+  //         setSelectedYear(currentUserData[2]);
+  //         if (
+  //           selectedCollege !== null ||
+  //           selectedCollege !== [] ||
+  //           selectedCollege !== undefined ||
+  //           selectedBranch !== null ||
+  //           selectedBranch !== [] ||
+  //           selectedBranch !== undefined ||
+  //           selectedYear !== null ||
+  //           selectedYear !== [] ||
+  //           selectedYear !== undefined
+  //         ) {
+  //           setDataFetched(true);
+  //           setGetFireAuthUser(true);
+  //         }
+  //       }
+  //     } else {
+  //       console.log("New User in auth");
+  //       db.collection("colleges")
+  //         .get()
+  //         .then((querySnapshot) => {
+  //           querySnapshot.forEach((doc) => {
+  //             collegeOptions.push(doc.data());
+  //           });
+  //         })
+  //         .then(() => {
+  //           setGetFireAuthUser(true);
+  //         });
+
+  //       return;
+  //     }
+  //   });
+  // };
 
   const handleSignIn = (key) => {
     switch (key) {
@@ -62,7 +108,7 @@ const Login = () => {
           .then((result) => {
             var user = result.user;
             setCurrentUser(user);
-            getData();
+            // getData();
           })
           .catch((error) => {
             console.log(error);
@@ -75,7 +121,7 @@ const Login = () => {
           .then((result) => {
             var user = result.user;
             setCurrentUser(user);
-            getData();
+            // getData();
           })
           .catch((error) => {
             console.log(error);
@@ -88,7 +134,7 @@ const Login = () => {
           .then((result) => {
             var user = result.user;
             setCurrentUser(user);
-            getData();
+            // getData();
           })
           .catch((error) => {
             console.log(error);
@@ -101,7 +147,7 @@ const Login = () => {
           .then((result) => {
             var user = result.user;
             setCurrentUser(user);
-            getData();
+            // getData();
           })
           .catch((error) => {
             console.log(error);
@@ -122,7 +168,7 @@ const Login = () => {
               console.log("gasucv");
               var user = result.user;
               setCurrentUser(user);
-              getData();
+              // getData();
             });
           document.getElementById("sign-up-form").reset();
         }
@@ -137,7 +183,7 @@ const Login = () => {
           .then((result) => {
             var user = result.user;
             setCurrentUser(user);
-            getData();
+            // getData();
           });
         document.getElementById("sign-up-form").reset();
         break;
