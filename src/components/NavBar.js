@@ -71,56 +71,56 @@ const NavBar = () => {
 
       <ul className="nav_list">
         <li>
-          <Link to="/" className="nav_link active" onClick={colorLink}>
+          <Link to="/edtech" className="nav_link active" onClick={colorLink}>
             <i className="bx bx-table"></i>
             <span className="nav_name">Timetable</span>
           </Link>
           <span className="tooltip">Timetable</span>
         </li>
         <li>
-          <Link to="/portion" className="nav_link" onClick={colorLink}>
+          <Link to="/edtech/portion" className="nav_link" onClick={colorLink}>
             <i className="bx bx-list-check"></i>
             <span className="nav_name">Portion</span>
           </Link>
           <span className="tooltip">Portion</span>
         </li>
         <li>
-          <Link to="/textbook" className="nav_link" onClick={colorLink}>
+          <Link to="/edtech/textbook" className="nav_link" onClick={colorLink}>
             <i className="bx bxs-book"></i>
             <span className="nav_name">TextBook</span>
           </Link>
           <span className="tooltip">TextBook</span>
         </li>
         <li>
-          <Link to="/notes" className="nav_link" onClick={colorLink}>
+          <Link to="/edtech/notes" className="nav_link" onClick={colorLink}>
             <i className="bx bx-book-open"></i>
             <span className="nav_name">Notes</span>
           </Link>
           <span className="tooltip">Notes</span>
         </li>
         <li>
-          <Link to="/recommendation" className="nav_link" onClick={colorLink}>
+          <Link to="/edtech/recommendation" className="nav_link" onClick={colorLink}>
             <i className="bx bx-library"></i>
             <span className="nav_name">Recommendation</span>
           </Link>
           <span className="tooltip">Recommendation</span>
         </li>
         <li>
-          <Link to="/faculty" className="nav_link" onClick={colorLink}>
+          <Link to="/edtech/faculty" className="nav_link" onClick={colorLink}>
             <i className="bx bx-group"></i>
             <span className="nav_name">People</span>
           </Link>
           <span className="tooltip">People</span>
         </li>
         <li>
-          <Link to="/about" className="nav_link" onClick={colorLink}>
+          <Link to="/edtech/about" className="nav_link" onClick={colorLink}>
             <i className="bx bxs-school"></i>
             <span className="nav_name">About</span>
           </Link>
           <span className="tooltip">About</span>
         </li>
         <li>
-          <Link to="/user" className="nav_link" onClick={colorLink}>
+          <Link to="/edtech/user" className="nav_link" onClick={colorLink}>
             <i className="bx bx-user"></i>
             <span className="nav_name">User</span>
           </Link>
