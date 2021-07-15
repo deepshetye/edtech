@@ -19,6 +19,9 @@ const Home = () => {
           <TopNavBar />
           <NavBar />
           <Switch>
+            <Route exact path="/edtech">
+              <Timetable />
+            </Route>
             <Route path="/edtech/portion">
               <Portion />
             </Route>
@@ -39,9 +42,6 @@ const Home = () => {
             </Route>
             <Route path="/edtech/user">
               <div className="main_content_body">HI</div>
-            </Route>
-            <Route path="/">
-              <Timetable />
             </Route>
           </Switch>
         </Router>
