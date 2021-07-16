@@ -9,6 +9,8 @@ The technologies/tools shown below are just used for frontend and the Api is bui
 
 If you find any bug or have any suggestion, You can post them in issues section of this github repository.
 
+**Copyright © 2021 All Rights Reserved By [Deep Shetye](https://github.com/deepshetye)**
+
 <br />
 
 ## Features
