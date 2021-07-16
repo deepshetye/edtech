@@ -45,6 +45,11 @@ If you find any bug or have any suggestion, You can post them in issues section 
 >> [GitHub](https://github.com/deepshetye) \
 >> [Instragram](https://www.instagram.com/deepshetye_/)
 
+> **Raj Dhulapkar**
+>> [LinkedIn](https://www.linkedin.com/in/raj-naik-dhulapkar-4133811b4/) \
+>> [GitHub](https://github.com/RajNykDhulapkar) \
+>> [Instragram](https://www.instagram.com/rajnykdhulapkar/)
+
 <br />
 
 ## Screenshots
