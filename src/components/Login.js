@@ -13,19 +13,11 @@ import { AuthContext } from "../Auth";
 
 const Login = () => {
   const {
-    currentUser,
-    currentUserData,
-    setGetFireAuthUser,
     setCurrentUser,
-    setCurrentUserData,
-    dataFetched,
-    setDataFetched,
-    setPending,
     collegeOptions,
   } = useContext(AuthContext);
 
   useEffect(() => {
-    // console.log(collegeOptions)
     if(collegeOptions[0] == undefined){
       db.collection("colleges")
       .get()
@@ -40,66 +32,6 @@ const Login = () => {
     }
   }, [])
 
-  // const getData = () => {
-  //   var docRef = db.collection("userPreference").doc(auth.currentUser.uid);
-  //   docRef.get().then((doc) => {
-  //     if (doc.exists) {
-  //       console.log("Old user found in Auth");
-  //       setCurrentUserData([
-  //         {
-  //           label: `${doc.data().college.label}`,
-  //           value: `${doc.data().college.value}`,
-  //         },
-  //         {
-  //           label: `${doc.data().branch.label}`,
-  //           value: `${doc.data().branch.value}`,
-  //         },
-  //         {
-  //           label: `${doc.data().year.label}`,
-  //           value: `${doc.data().year.value}`,
-  //         },
-  //       ]);
-  //       if (
-  //         currentUserData !== [] ||
-  //         currentUserData !== undefined ||
-  //         currentUserData !== null
-  //       ) {
-  //         setSelectedCollege(currentUserData[0]);
-  //         setSelectedBranch(currentUserData[1]);
-  //         setSelectedYear(currentUserData[2]);
-  //         if (
-  //           selectedCollege !== null ||
-  //           selectedCollege !== [] ||
-  //           selectedCollege !== undefined ||
-  //           selectedBranch !== null ||
-  //           selectedBranch !== [] ||
-  //           selectedBranch !== undefined ||
-  //           selectedYear !== null ||
-  //           selectedYear !== [] ||
-  //           selectedYear !== undefined
-  //         ) {
-  //           setDataFetched(true);
-  //           setGetFireAuthUser(true);
-  //         }
-  //       }
-  //     } else {
-  //       console.log("New User in auth");
-  //       db.collection("colleges")
-  //         .get()
-  //         .then((querySnapshot) => {
-  //           querySnapshot.forEach((doc) => {
-  //             collegeOptions.push(doc.data());
-  //           });
-  //         })
-  //         .then(() => {
-  //           setGetFireAuthUser(true);
-  //         });
-
-  //       return;
-  //     }
-  //   });
-  // };
-
   const handleSignIn = (key) => {
     switch (key) {
       case 1:
@@ -108,7 +40,6 @@ const Login = () => {
           .then((result) => {
             var user = result.user;
             setCurrentUser(user);
-            // getData();
           })
           .catch((error) => {
             console.log(error);
@@ -121,7 +52,6 @@ const Login = () => {
           .then((result) => {
             var user = result.user;
             setCurrentUser(user);
-            // getData();
           })
           .catch((error) => {
             console.log(error);
@@ -134,7 +64,6 @@ const Login = () => {
           .then((result) => {
             var user = result.user;
             setCurrentUser(user);
-            // getData();
           })
           .catch((error) => {
             console.log(error);
@@ -147,7 +76,6 @@ const Login = () => {
           .then((result) => {
             var user = result.user;
             setCurrentUser(user);
-            // getData();
           })
           .catch((error) => {
             console.log(error);
@@ -168,7 +96,6 @@ const Login = () => {
               console.log("gasucv");
               var user = result.user;
               setCurrentUser(user);
-              // getData();
             });
           document.getElementById("sign-up-form").reset();
         }
@@ -183,7 +110,6 @@ const Login = () => {
           .then((result) => {
             var user = result.user;
             setCurrentUser(user);
-            // getData();
           });
         document.getElementById("sign-up-form").reset();
         break;

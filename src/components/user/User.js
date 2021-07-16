@@ -124,15 +124,15 @@ const User = () => {
         >
           <div>
             <h3 style={{ color: "rgba(0,0,100,1)" }}>Select Your College</h3>
-            <Select defaultValue={selectedCollege} onChange={onCollegeInputChange} options={collegeOptions} />
+            <Select defaultValue={currentUserData[0]} onChange={onCollegeInputChange} options={collegeOptions} />
           </div>
           <div>
             <h3 style={{ color: "rgba(0,0,100,1)" }}>Select Your Branch</h3>
-            <Select defaultValue={selectedBranch} onChange={onBranchInputChange} options={branchOptions} />
+            <Select defaultValue={currentUserData[1]} onChange={onBranchInputChange} options={branchOptions} />
           </div>
           <div>
             <h3 style={{ color: "rgba(0,0,100,1)" }}>Select Your Year</h3>
-            <Select defaultValue={selectedYear} onChange={onYearInputChange} options={yearOptions} />
+            <Select defaultValue={currentUserData[2]} onChange={onYearInputChange} options={yearOptions} />
           </div>
           <div
             style={{

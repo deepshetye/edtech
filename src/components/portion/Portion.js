@@ -3,7 +3,7 @@ import { AuthContext } from "../../Auth";
 const axios = require("axios");
 
 const Portion = () => {
-  const { selectedYear, selectedCollege } = useContext(AuthContext);
+  const { currentUserData } = useContext(AuthContext);
 
   const [subjects, setSubjects] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -11,7 +11,7 @@ const Portion = () => {
   const getSubjects = () => {
     axios
       .get(
-        `${process.env.REACT_APP_API_URL}subject-list/?year=${selectedYear.value}`,
+        `${process.env.REACT_APP_API_URL}subject-list/?year=${currentUserData[2].value}`,
         {
           params: {
             page: 1,
@@ -52,7 +52,7 @@ const Portion = () => {
           </h6>
           {subjects.map((subject) =>
             subject.portions.map((portion) => {
-              if (portion.college == selectedCollege.value) {
+              if (portion.college == currentUserData[0].value) {
                 return (
                   <a href={portion.link} target="_blank">
                     <div className="gd-fs gd-fs-elm" key={subject.subject_code}>

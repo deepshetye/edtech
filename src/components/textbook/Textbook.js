@@ -11,7 +11,7 @@ import { AuthContext } from "../../Auth";
 const axios = require("axios");
 
 const Textbook = () => {
-  const { selectedYear } = useContext(AuthContext);
+  const { currentUserData } = useContext(AuthContext);
 
   const [subjects, setSubjects] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -23,7 +23,7 @@ const Textbook = () => {
   const getSubjects = () => {
     axios
       .get(
-        `${process.env.REACT_APP_API_URL}subject-list/?year=${selectedYear.value}`,
+        `${process.env.REACT_APP_API_URL}subject-list/?year=${currentUserData[2].value}`,
         {
           params: {
             page: 1,

@@ -12,7 +12,7 @@ const axios = require("axios");
 
 const Notes = () => {
 
-  const { selectedYear } = useContext(AuthContext);
+  const { currentUserData } = useContext(AuthContext);
 
   const [subjects, setSubjects] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -23,7 +23,7 @@ const Notes = () => {
 
   const getSubjects = () => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}subject-list/?year=${selectedYear.value}`, {
+      .get(`${process.env.REACT_APP_API_URL}subject-list/?year=${currentUserData[2].value}`, {
         params: {
           page: 1,
           page_size: 100,
