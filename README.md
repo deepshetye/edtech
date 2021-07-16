@@ -31,6 +31,7 @@ If you find any bug or have any suggestion, You can post them in issues section 
 <img align="left" alt="Visual Studio Code" width="30px" src="https://cdn.icon-icons.com/icons2/2415/PNG/512/react_original_logo_icon_146374.png" />
 <img align="left" alt="Visual Studio Code" width="30px" src="https://cdn.iconscout.com/icon/free/png-256/firebase-1-282796.png" />
 <img align="left" alt="Visual Studio Code" width="30px" src="https://cdn.icon-icons.com/icons2/936/PNG/512/github-logo_icon-icons.com_73546.png" />
+<img align="left" alt="Visual Studio Code" width="30px" src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_django_icon_130645.png" />
 
 
 <br />
