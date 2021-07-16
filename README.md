@@ -39,7 +39,7 @@ If you find any bug or have any suggestion, You can post them in issues section 
 
 ## Contributors
 
-> Deep Shetye
+> **Deep Shetye**
 >> [LinkedIn](https://www.linkedin.com/in/deepshetye/) \
 >> [GitHub](https://github.com/deepshetye) \
 >> [Instragram](https://www.instagram.com/deepshetye_/)
@@ -48,18 +48,19 @@ If you find any bug or have any suggestion, You can post them in issues section 
 
 ## Screenshots
 
-**Sign Up page**
 
 <img align="left" alt="Visual Studio Code" src="./images/Screenshot%20from%202021-07-16%2019-18-43.png" />
 
-<br />
+**Sign Up page**
 
-**Sign In page**
+<br />
 
 <img align="left" alt="Visual Studio Code" src="./images/Screenshot%20from%202021-07-16%2019-18-32.png" />
 
+**Sign In page**
+
 <br />
 
-**User Preference Form**
-
 <img align="left" alt="Visual Studio Code" src="./images/Screenshot%20from%202021-07-16%2019-20-19.png" />
+
+**User Preference Form**
