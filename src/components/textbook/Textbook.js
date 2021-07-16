@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,9 +7,12 @@ import {
   useRouteMatch,
   useParams,
 } from "react-router-dom";
+import { AuthContext } from "../../Auth";
 const axios = require("axios");
 
 const Textbook = () => {
+  const { selectedYear } = useContext(AuthContext);
+
   const [subjects, setSubjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [books, setBooks] = useState([]);
@@ -19,18 +22,20 @@ const Textbook = () => {
 
   const getSubjects = () => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}subject-list/`, {
-        params: {
-          page: 1,
-          page_size: 100,
-        },
-      })
+      .get(
+        `${process.env.REACT_APP_API_URL}subject-list/?year=${selectedYear.value}`,
+        {
+          params: {
+            page: 1,
+            page_size: 100,
+          },
+        }
+      )
       .then((res) => {
         const results = res.data.results;
         setSubjects(results);
         setLoading(false);
       });
-    return;
   };
 
   useEffect(() => {
@@ -39,15 +44,12 @@ const Textbook = () => {
 
   const getBooks = (key) => {
     axios
-      .get(
-        `${process.env.REACT_APP_API_URL}textbook-list/?subject=${key}`,
-        {
-          params: {
-            page: 1,
-            page_size: 100,
-          },
-        }
-      )
+      .get(`${process.env.REACT_APP_API_URL}textbook-list/?subject=${key}`, {
+        params: {
+          page: 1,
+          page_size: 100,
+        },
+      })
       .then((res) => {
         const results = res.data.results;
         setBooks(results);
@@ -62,7 +64,6 @@ const Textbook = () => {
       setStoredSubject(`${subjectCode}`);
       getBooks(`${subjectCode}`);
     }
-    // document.getElementById('textbook-block').style.display = 'none'
     return (
       <div>
         {bookLoad ? (

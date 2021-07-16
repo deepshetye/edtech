@@ -36,17 +36,6 @@ export const AuthProvider = ({ children }) => {
             value: `${doc.data().year.value}`,
           },
         ]);
-        
-        if (currentUserData !== [] || currentUserData.length !== 0 || currentUserData !== undefined || currentUserData !== null) {
-          setSelectedCollege(currentUserData[0]);
-          setSelectedBranch(currentUserData[1]);
-          setSelectedYear(currentUserData[2]);
-          if(selectedCollege !== null || selectedCollege !== [] || selectedCollege !== undefined || selectedBranch !== null || selectedBranch !== [] || selectedBranch !== undefined || selectedYear !== null || selectedYear !== [] || selectedYear !== undefined ){
-            setGetFireAuthUser(true);
-                setDataFetched(true);
-
-          }
-        }
       } else {
         console.log("New User in auth");
         db.collection("colleges")
@@ -66,17 +55,40 @@ export const AuthProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    // setDataFetched(true);
-  }, [currentUserData])
+    if (
+      currentUserData !== [] ||
+      currentUserData.length !== 0 ||
+      currentUserData !== undefined ||
+      currentUserData !== null
+    ) {
+      setSelectedCollege(currentUserData[0]);
+      setSelectedBranch(currentUserData[1]);
+      setSelectedYear(currentUserData[2]);
+      if (
+        selectedCollege !== null ||
+        selectedCollege !== [] ||
+        selectedCollege !== undefined ||
+        selectedBranch !== null ||
+        selectedBranch !== [] ||
+        selectedBranch !== undefined ||
+        selectedYear !== null ||
+        selectedYear !== [] ||
+        selectedYear !== undefined
+      ) {
+        setGetFireAuthUser(true);
+        setDataFetched(true);
+      }
+    }
+  }, [currentUserData]);
 
   useEffect(() => {
     firebaseApp.auth().onAuthStateChanged((user) => {
       setCurrentUser(user);
-      if (currentUser != null) {  
+      if (currentUser != null) {
         checkData();
       }
     });
-  },[]);
+  }, []);
 
   return (
     <AuthContext.Provider

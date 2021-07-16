@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,9 +7,13 @@ import {
   useRouteMatch,
   useParams,
 } from "react-router-dom";
+import { AuthContext } from "../../Auth";
 const axios = require("axios");
 
 const Notes = () => {
+
+  const { selectedYear } = useContext(AuthContext);
+
   const [subjects, setSubjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [books, setBooks] = useState([]);
@@ -19,7 +23,7 @@ const Notes = () => {
 
   const getSubjects = () => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}subject-list/`, {
+      .get(`${process.env.REACT_APP_API_URL}subject-list/?year=${selectedYear.value}`, {
         params: {
           page: 1,
           page_size: 100,
@@ -62,7 +66,6 @@ const Notes = () => {
       setStoredSubject(`${subjectCode}`);
       getBooks(`${subjectCode}`);
     }
-    // document.getElementById('textbook-block').style.display = 'none'
     return (
       <div>
         {bookLoad ? (
