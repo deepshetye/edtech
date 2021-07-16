@@ -1,18 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../../Auth";
 const axios = require("axios");
 
 const Portion = () => {
+  const { selectedYear, selectedCollege } = useContext(AuthContext);
+
   const [subjects, setSubjects] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const getSubjects = () => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}subject-list/`, {
-        params: {
-          page: 1,
-          page_size: 100,
-        },
-      })
+      .get(
+        `${process.env.REACT_APP_API_URL}subject-list/?year=${selectedYear.value}`,
+        {
+          params: {
+            page: 1,
+            page_size: 100,
+          },
+        }
+      )
       .then((res) => {
         const results = res.data.results;
         setSubjects(results);
@@ -24,22 +30,6 @@ const Portion = () => {
   useEffect(() => {
     getSubjects();
   }, []);
-
-  function getPortionLink({ sub }) {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}portion-list/?subject=MA100`, {
-        params: {
-          page: 1,
-          page_size: 100,
-        },
-      })
-      .then((res) => {
-        console.log(sub.subject_code);
-        const results = res.data.results;
-        console.log(res);
-      });
-    return;
-  }
 
   return (
     <div className="main_content_body">
@@ -60,20 +50,26 @@ const Portion = () => {
             SUBJECTS
             <hr style={{ marginTop: "7px" }} />
           </h6>
-          {subjects.map((subject) => (
-            <div className="gd-fs gd-fs-elm" key={subject.subject_code}>
-              <a onClick={() => getPortionLink(subject.subject_code)}>
-                <i className="bx bxs-folder"></i>
-                <span
-                  className="gd-fs-n"
-                  style={{ marginLeft: "10px" }}
-                  className="gd-fs-elm"
-                >
-                  {subject.subject_code}
-                </span>
-              </a>
-            </div>
-          ))}
+          {subjects.map((subject) =>
+            subject.portions.map((portion) => {
+              if (portion.college == selectedCollege.value) {
+                return (
+                  <a href={portion.link} target="_blank">
+                    <div className="gd-fs gd-fs-elm" key={subject.subject_code}>
+                      <i className="bx bxs-folder"></i>
+                      <span
+                        className="gd-fs-n"
+                        style={{ marginLeft: "10px" }}
+                        className="gd-fs-elm"
+                      >
+                        {subject.subject_code}
+                      </span>
+                    </div>
+                  </a>
+                );
+              }
+            })
+          )}
         </div>
       )}
     </div>
