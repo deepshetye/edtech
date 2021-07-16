@@ -51,16 +51,16 @@ If you find any bug or have any suggestion, You can post them in issues section 
 
 <img align="left" alt="Visual Studio Code" src="./images/Screenshot%20from%202021-07-16%2019-18-43.png" />
 
-**Sign Up page**
+**Sign Up page** 👆
 
 <br />
 
 <img align="left" alt="Visual Studio Code" src="./images/Screenshot%20from%202021-07-16%2019-18-32.png" />
 
-**Sign In page**
+**Sign In page** 👆
 
 <br />
 
 <img align="left" alt="Visual Studio Code" src="./images/Screenshot%20from%202021-07-16%2019-20-19.png" />
 
-**User Preference Form**
+**User Preference Form** 👆
