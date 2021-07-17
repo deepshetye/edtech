@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 import { AuthContext } from "./Auth";
 import Login from "./components/Login";
 import Select from "react-select";
-import { db, auth } from './firebase'
+import { db, auth } from "./firebase";
 
 const yearOptions = [
   { value: "FIRST", label: "First" },
@@ -13,7 +13,6 @@ const yearOptions = [
 ];
 
 const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
-
   const {
     currentUser,
     dataFetched,
