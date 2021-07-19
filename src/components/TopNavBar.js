@@ -54,7 +54,7 @@ const TopNavBar = () => {
         ></i>
       </div>
       <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
-        <ul className="nav-menu-items" onClick={showSidebar}>
+        <ul className="nav-menu-items" onClick={showSidebar} style={{overflow:'scroll'}}>
           <li className="navbar-toggle">
             <div to="#" className="menu-bars bx bx-x"></div>
           </li>
@@ -106,7 +106,6 @@ const TopNavBar = () => {
                 <i className="bx bx-user"></i>
                 <span className="nav_name">User</span>
               </Link>
-              <span className="tooltip">User</span>
             </li>
             <li className="category-list-item">
               <a

@@ -23,11 +23,13 @@ const Textbook = () => {
   const getSubjects = () => {
     axios
       .get(
-        `${process.env.REACT_APP_API_URL}subject-list/?year=${currentUserData[2].value}`,
+        `${process.env.REACT_APP_API_URL}subject-list/${currentUserData[0].value}/`,
         {
           params: {
             page: 1,
             page_size: 100,
+            year: currentUserData[2].value,
+            branch__branch_code: currentUserData[1].value
           },
         }
       )

@@ -23,11 +23,13 @@ const Recommendation = () => {
   const getSubjects = () => {
     axios
       .get(
-        `${process.env.REACT_APP_API_URL}subject-list/?year=${currentUserData[2].value}`,
+        `${process.env.REACT_APP_API_URL}subject-list/${currentUserData[0].value}/`,
         {
           params: {
             page: 1,
             page_size: 100,
+            year: currentUserData[2].value,
+            branch__branch_code: currentUserData[1].value,
           },
         }
       )
@@ -63,16 +65,16 @@ const Recommendation = () => {
             <hr style={{ marginTop: "7px" }} />
           </h6>
           {subjects.map((subject) => (
-              <div className="gd-fs" key={subject.subject_code}>
-                <i className="bx bxs-folder"></i>
-                <span
-                  className="gd-fs-n"
-                  style={{ marginLeft: "10px" }}
-                  className="gd-fs-elm"
-                >
-                  {subject.subject_code}
-                </span>
-              </div>
+            <div className="gd-fs" key={subject.subject_code}>
+              <i className="bx bxs-folder"></i>
+              <span
+                className="gd-fs-n"
+                style={{ marginLeft: "10px" }}
+                className="gd-fs-elm"
+              >
+                {subject.subject_code}
+              </span>
+            </div>
           ))}
         </div>
       )}

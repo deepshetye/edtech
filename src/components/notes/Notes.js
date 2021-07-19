@@ -11,7 +11,6 @@ import { AuthContext } from "../../Auth";
 const axios = require("axios");
 
 const Notes = () => {
-
   const { currentUserData } = useContext(AuthContext);
 
   const [subjects, setSubjects] = useState([]);
@@ -23,12 +22,17 @@ const Notes = () => {
 
   const getSubjects = () => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}subject-list/?year=${currentUserData[2].value}`, {
-        params: {
-          page: 1,
-          page_size: 100,
-        },
-      })
+      .get(
+        `${process.env.REACT_APP_API_URL}subject-list/${currentUserData[0].value}/`,
+        {
+          params: {
+            page: 1,
+            page_size: 100,
+            year: currentUserData[2].value,
+            branch__branch_code: currentUserData[1].value,
+          },
+        }
+      )
       .then((res) => {
         const results = res.data.results;
         setSubjects(results);
@@ -43,15 +47,12 @@ const Notes = () => {
 
   const getBooks = (key) => {
     axios
-      .get(
-        `${process.env.REACT_APP_API_URL}material-list/?subject=${key}`,
-        {
-          params: {
-            page: 1,
-            page_size: 100,
-          },
-        }
-      )
+      .get(`${process.env.REACT_APP_API_URL}material-list/?subject=${key}`, {
+        params: {
+          page: 1,
+          page_size: 100,
+        },
+      })
       .then((res) => {
         const results = res.data.results;
         setBooks(results);

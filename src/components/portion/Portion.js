@@ -11,11 +11,13 @@ const Portion = () => {
   const getSubjects = () => {
     axios
       .get(
-        `${process.env.REACT_APP_API_URL}subject-list/?year=${currentUserData[2].value}`,
+        `${process.env.REACT_APP_API_URL}subject-list/${currentUserData[0].value}/`,
         {
           params: {
             page: 1,
             page_size: 100,
+            year: currentUserData[2].value,
+            branch__branch_code: currentUserData[1].value,
           },
         }
       )
@@ -50,26 +52,22 @@ const Portion = () => {
             SUBJECTS
             <hr style={{ marginTop: "7px" }} />
           </h6>
-          {subjects.map((subject) =>
-            subject.portions.map((portion) => {
-              if (portion.college == currentUserData[0].value) {
-                return (
-                  <a href={portion.link} target="_blank">
-                    <div className="gd-fs gd-fs-elm" key={subject.subject_code}>
-                      <i className="bx bxs-folder"></i>
-                      <span
-                        className="gd-fs-n"
-                        style={{ marginLeft: "10px" }}
-                        className="gd-fs-elm"
-                      >
-                        {subject.subject_code}
-                      </span>
-                    </div>
-                  </a>
-                );
-              }
-            })
-          )}
+          {subjects.map((subject) => {
+            return (
+              <a href={`https://drive.google.com/file/d/${subject.portion_link}/view?usp=sharing`} target="_blank">
+                <div className="gd-fs gd-fs-elm" key={subject.subject_code}>
+                  <i className="bx bxs-folder"></i>
+                  <span
+                    className="gd-fs-n"
+                    style={{ marginLeft: "10px" }}
+                    className="gd-fs-elm"
+                  >
+                    {subject.subject_code}
+                  </span>
+                </div>
+              </a>
+            );
+          })}
         </div>
       )}
     </div>
