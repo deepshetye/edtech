@@ -47,10 +47,14 @@ const Notes = () => {
 
   const getBooks = (key) => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}material-list/?subject=${key}`, {
+      .get(`${process.env.REACT_APP_API_URL}material-list/`, {
         params: {
           page: 1,
           page_size: 100,
+          college: currentUserData[0].value,
+          branch__branch_code: currentUserData[1].value,
+          year: currentUserData[2].value,
+          subject__subject_code: key
         },
       })
       .then((res) => {
@@ -116,7 +120,14 @@ const Notes = () => {
                   >
                     {book.title}
                   </h6>
-                  <p style={{ marginLeft: "3px" }}>{book.author}</p>
+                  <a
+                    href={book.contributor_link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <p style={{ marginLeft: "3px" }}>{book.contributor_name}</p>
+                  </a>
                 </div>
               </a>
             ))}
