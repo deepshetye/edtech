@@ -102,32 +102,59 @@ const Notes = () => {
                   className="tx-bk"
                   style={{
                     textDecoration: "none",
-                    width: "200px",
+                    width: "250px",
                     height: "55px",
                   }}
                 >
-                  <h6
-                    className="gd-fs-n"
+                  <div
                     style={{
-                      textDecoration: "none",
-                      color: "#5f6368",
-                      // marginLeft: "3px",
-                      marginLeft: "10px",
-                      marginTop: "3px",
-                      height: "26px",
-                      overflow: "hidden",
+                      display: "flex",
+                      height: "inherit",
                     }}
                   >
-                    {book.title}
-                  </h6>
-                  <a
-                    href={book.contributor_link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ textDecoration: "none" }}
-                  >
-                    <p style={{ marginLeft: "3px" }}>{book.contributor_name}</p>
-                  </a>
+                    <i
+                      className="bx bxs-book"
+                      style={{
+                        height: "inherit",
+                        display: "flex",
+                        padding: "0 10px",
+                        fontSize: "1.5em",
+                        alignItems: "center",
+                        color: "black",
+                      }}
+                    />
+                    <div
+                      style={{
+                        width: '-webkit-fill-available',
+                      }}
+                    >
+                      <h6
+                        className="gd-fs-n"
+                        style={{
+                          textDecoration: "none",
+                          color: "#5f6368",
+                          marginLeft: "3px",
+                          // marginLeft: "10px",
+                          marginTop: "10px",
+                          fontSize: '15px',
+                          // height: "26px",
+                          overflow: "hidden",
+                        }}
+                      >
+                        {book.title}
+                      </h6>
+                      <a
+                        href={book.contributor_link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ textDecoration: "none" }}
+                      >
+                        <p style={{ marginLeft: "3px" }}>
+                          {book.contributor_name}
+                        </p>
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </a>
             ))}
