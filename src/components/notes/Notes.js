@@ -66,7 +66,7 @@ const Notes = () => {
 
   const Books = () => {
     const { subjectCode } = useParams();
-    const { path, url } = useRouteMatch();
+    // const { path, url } = useRouteMatch();
     if (books.length === 0 || `${subjectCode}` !== storedSubject) {
       setStoredSubject(`${subjectCode}`);
       getBooks(`${subjectCode}`);
