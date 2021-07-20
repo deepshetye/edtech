@@ -53,8 +53,8 @@ const Notes = () => {
           page_size: 100,
           college: currentUserData[0].value,
           branch__branch_code: currentUserData[1].value,
+          subject__subject_code: key,
           year: currentUserData[2].value,
-          subject__subject_code: key
         },
       })
       .then((res) => {
@@ -66,7 +66,7 @@ const Notes = () => {
 
   const Books = () => {
     const { subjectCode } = useParams();
-    // const { path, url } = useRouteMatch();
+    const { path, url } = useRouteMatch();
     if (books.length === 0 || `${subjectCode}` !== storedSubject) {
       setStoredSubject(`${subjectCode}`);
       getBooks(`${subjectCode}`);
