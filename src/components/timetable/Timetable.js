@@ -25,6 +25,7 @@ const Timetable = () => {
 
   useEffect(() => {
     getTimetable();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -45,6 +46,7 @@ const Timetable = () => {
         </h1>
       ) : (
         <iframe
+          title="Timetable Frame"
           src={`https://docs.google.com/spreadsheets/d/e/${tturl}/pubhtml?widget=true&amp;headers=false`}
           style={{
             height: "50%",

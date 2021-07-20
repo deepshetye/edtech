@@ -25,6 +25,7 @@ const About = () => {
 
   useEffect(() => {
     getSubjects();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -48,7 +49,7 @@ const About = () => {
             alignItems: "center",
           }}
         >
-          <img src={collegeResult.link_image} />
+          <img alt="College Logo" src={collegeResult.link_image} />
           <div
             style={{
               marginTop: "10px",
@@ -61,7 +62,7 @@ const About = () => {
           <h5>EST. {collegeResult.established}</h5>
           <div style={{ marginTop: "5px" }}>{collegeResult.location}</div>
           <div style={{ marginTop: "20px" }}>
-            <a href={collegeResult.website_link} target="_blank">
+            <a href={collegeResult.website_link} target="_blank" rel="noopener noreferrer">
               <i
                 className="bx bx-link"
                 style={{
@@ -74,6 +75,7 @@ const About = () => {
             <a
               href={`https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=${collegeResult.email}`}
               target="_blank"
+              rel="noopener noreferrer"
             >
               <i
                 className="bx bx-mail-send"
@@ -84,7 +86,7 @@ const About = () => {
                 }}
               />
             </a>
-            <a href={collegeResult.linkedin} target="_blank">
+            <a href={collegeResult.linkedin} target="_blank" rel="noopener noreferrer">
               <i
                 className="bx bxl-linkedin"
                 style={{
@@ -94,7 +96,7 @@ const About = () => {
                 }}
               />
             </a>
-            <a href={collegeResult.instagram} target="_blank">
+            <a href={collegeResult.instagram} target="_blank" rel="noopener noreferrer">
               <i
                 className="bx bxl-instagram"
                 style={{
@@ -104,7 +106,7 @@ const About = () => {
                 }}
               />
             </a>
-            <a href={collegeResult.facebook} target="_blank">
+            <a href={collegeResult.facebook} target="_blank" rel="noopener noreferrer">
               <i
                 className="bx bxl-facebook"
                 style={{
@@ -114,7 +116,7 @@ const About = () => {
                 }}
               />
             </a>
-            <a href={collegeResult.twitter} target="_blank">
+            <a href={collegeResult.twitter} target="_blank" rel="noopener noreferrer">
               <i
                 className="bx bxl-twitter"
                 style={{
@@ -127,6 +129,7 @@ const About = () => {
             <a
               href={collegeResult.youtube}
               target="_blank"
+              rel="noopener noreferrer"
             >
               <i
                 className="bx bxl-youtube"
@@ -149,6 +152,7 @@ const About = () => {
             }}
           >
             <iframe
+            title="Google map link for college"
               src={collegeResult.static_map_src}
               style={{
                 width: "85%",

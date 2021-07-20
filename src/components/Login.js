@@ -18,7 +18,7 @@ const Login = () => {
   } = useContext(AuthContext);
 
   useEffect(() => {
-    if(collegeOptions[0] == undefined){
+    if(collegeOptions[0] === undefined){
       db.collection("colleges")
       .get()
       .then((querySnapshot) => {
@@ -30,6 +30,7 @@ const Login = () => {
         
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleSignIn = (key) => {

@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
   Link,
   useRouteMatch,
@@ -17,7 +16,7 @@ const Textbook = () => {
   const [loading, setLoading] = useState(true);
   const [books, setBooks] = useState([]);
   const [bookLoad, setBookLoad] = useState(true);
-  const { path, url } = useRouteMatch();
+  const { url } = useRouteMatch();
   const [storedSubject, setStoredSubject] = useState("DEFAULT");
 
   const getSubjects = () => {
@@ -42,6 +41,7 @@ const Textbook = () => {
 
   useEffect(() => {
     getSubjects();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getBooks = (key) => {
@@ -61,8 +61,8 @@ const Textbook = () => {
 
   const Books = () => {
     const { subjectCode } = useParams();
-    const { path, url } = useRouteMatch();
-    if (books.length == 0 || `${subjectCode}` != storedSubject) {
+    // const { path, url } = useRouteMatch();
+    if (books.length === 0 || `${subjectCode}` !== storedSubject) {
       setStoredSubject(`${subjectCode}`);
       getBooks(`${subjectCode}`);
     }
@@ -92,9 +92,11 @@ const Textbook = () => {
                   href={book.link}
                   target="_blank"
                   style={{ textDecoration: "none" }}
+                  rel="noopener noreferrer"
                 >
                   <div className="tx-bk-img">
                     <img
+                    alt="cover_image"
                       src={`https://docs.google.com/uc?id=${book.cover_image.slice(
                         32,
                         65
@@ -104,11 +106,10 @@ const Textbook = () => {
                   </div>
                   <h6
                     className="gd-fs-n"
-                    style={{ marginLeft: "10px" }}
                     style={{
                       textDecoration: "none",
                       color: "#5f6368",
-                      marginLeft: "3px",
+                      marginLeft: "10px",
                       marginTop: "3px",
                       height: "26px",
                       overflow: "hidden",
@@ -156,9 +157,8 @@ const Textbook = () => {
                     <div className="gd-fs" key={subject.subject_code}>
                       <i className="bx bxs-folder"></i>
                       <span
-                        className="gd-fs-n"
+                        className="gd-fs-n gd-fs-elm"
                         style={{ marginLeft: "10px" }}
-                        className="gd-fs-elm"
                       >
                         {subject.subject_code}
                       </span>

@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
   Link,
   useRouteMatch,
@@ -17,7 +16,7 @@ const Notes = () => {
   const [loading, setLoading] = useState(true);
   const [books, setBooks] = useState([]);
   const [bookLoad, setBookLoad] = useState(true);
-  const { path, url } = useRouteMatch();
+  const { url } = useRouteMatch();
   const [storedSubject, setStoredSubject] = useState("DEFAULT");
 
   const getSubjects = () => {
@@ -43,6 +42,7 @@ const Notes = () => {
 
   useEffect(() => {
     getSubjects();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getBooks = (key) => {
@@ -62,8 +62,8 @@ const Notes = () => {
 
   const Books = () => {
     const { subjectCode } = useParams();
-    const { path, url } = useRouteMatch();
-    if (books.length == 0 || `${subjectCode}` != storedSubject) {
+    // const { path, url } = useRouteMatch();
+    if (books.length === 0 || `${subjectCode}` !== storedSubject) {
       setStoredSubject(`${subjectCode}`);
       getBooks(`${subjectCode}`);
     }
@@ -91,6 +91,7 @@ const Notes = () => {
               <a
                 href={book.link}
                 target="_blank"
+                rel="noopener noreferrer"
                 style={{ textDecoration: "none" }}
               >
                 <div
@@ -103,11 +104,11 @@ const Notes = () => {
                 >
                   <h6
                     className="gd-fs-n"
-                    style={{ marginLeft: "10px" }}
                     style={{
                       textDecoration: "none",
                       color: "#5f6368",
-                      marginLeft: "3px",
+                      // marginLeft: "3px",
+                      marginLeft: "10px",
                       marginTop: "3px",
                       height: "26px",
                       overflow: "hidden",
@@ -155,9 +156,8 @@ const Notes = () => {
                     <div className="gd-fs" key={subject.subject_code}>
                       <i className="bx bxs-folder"></i>
                       <span
-                        className="gd-fs-n"
+                        className="gd-fs-n gd-fs-elm"
                         style={{ marginLeft: "10px" }}
-                        className="gd-fs-elm"
                       >
                         {subject.subject_code}
                       </span>

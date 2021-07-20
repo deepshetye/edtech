@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../Auth";
 import { firebaseApp } from "../firebase";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const TopNavBar = () => {
   const [sidebar, setSidebar] = useState(false);
@@ -108,14 +108,14 @@ const TopNavBar = () => {
               </Link>
             </li>
             <li className="category-list-item">
-              <a
+              <div
                 style={{}}
                 className="nav_link log-out-btn nav_list"
                 onClick={handleSignOut}
               >
                 <i className="bx bx-log-out " style={{ color: "white" }}></i>
                 <span className="nav_name">Log Out</span>
-              </a>
+              </div>
             </li>
           </ul>
         </ul>

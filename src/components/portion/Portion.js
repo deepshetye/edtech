@@ -31,6 +31,7 @@ const Portion = () => {
 
   useEffect(() => {
     getSubjects();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -54,13 +55,16 @@ const Portion = () => {
           </h6>
           {subjects.map((subject) => {
             return (
-              <a href={`https://drive.google.com/file/d/${subject.portion_link}/view?usp=sharing`} target="_blank">
+              <a 
+                href={`https://drive.google.com/file/d/${subject.portion_link}/view?usp=sharing`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <div className="gd-fs gd-fs-elm" key={subject.subject_code}>
                   <i className="bx bxs-folder"></i>
                   <span
-                    className="gd-fs-n"
+                    className="gd-fs-n gd-fs-elm"
                     style={{ marginLeft: "10px" }}
-                    className="gd-fs-elm"
                   >
                     {subject.subject_code}
                   </span>

@@ -1,6 +1,7 @@
-import firebase from "firebase";
+import firebase from "firebase/app";
+// import firebase from "firebase";
+import 'firebase/firestore';
 require("firebase/auth");
-require("firebase/firestore");
 
 // INITIALIZE FIREBASE
 
@@ -14,7 +15,7 @@ const firebaseConfig = {
   measurementId: `${process.env.REACT_APP_MEASUREMENT_ID}`
 };
 const firebaseApp = firebase.initializeApp(firebaseConfig);
-firebase.analytics();
+// firebase.analytics();
 
 firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
 

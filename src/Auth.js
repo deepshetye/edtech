@@ -21,7 +21,6 @@ export const AuthProvider = ({ children }) => {
     var docRef = db.collection("userPreference").doc(auth.currentUser.uid);
     docRef.get().then((doc) => {
       if (doc.exists) {
-        console.log("Old user found in Auth");
         setCurrentUserData([
           {
             label: `${doc.data().college.label}`,
@@ -53,15 +52,14 @@ export const AuthProvider = ({ children }) => {
             selectedBranch !== [] ||
             selectedBranch !== undefined ||
             selectedYear !== null ||
-            selectedYear != [] ||
-            selectedYear != undefined
+            selectedYear !== [] ||
+            selectedYear !== undefined
           ) {
             setGetFireAuthUser(true);
             setDataFetched(true);
           }
         }
       } else {
-        console.log("New User in auth");
         db.collection("colleges")
           .get()
           .then((querySnapshot) => {
@@ -84,6 +82,7 @@ export const AuthProvider = ({ children }) => {
         checkData();
       }
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -107,6 +106,7 @@ export const AuthProvider = ({ children }) => {
         selectedYear,
         setCollegeOptions,
         setBranchOptions,
+        yearOptions,
         setYearOptions,
       }}
     >

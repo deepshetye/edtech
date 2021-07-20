@@ -1,8 +1,9 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Route } from "react-router-dom";
 import { AuthContext } from "./Auth";
 import Login from "./components/Login";
 import Select from "react-select";
+import loading_logo from './EdTech.svg'
 import { db, auth } from "./firebase";
 
 const yearOptions = [
@@ -17,9 +18,7 @@ const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
     currentUser,
     dataFetched,
     setDataFetched,
-    setGetFireAuthUser,
     getFireAuthUser,
-    currentUserData,
     collegeOptions,
     branchOptions,
     setSelectedCollege,
@@ -39,7 +38,7 @@ const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
       .get()
       .then((doc) => {
         if (doc.exists) {
-          doc.data().list.map((branch) => {
+          doc.data().list.forEach((branch) => {
             branchOptions.push(branch);
           });
         } else {
@@ -72,7 +71,7 @@ const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
           college: selectedCollege,
           branch: selectedBranch,
           year: selectedYear,
-        })
+        },{merge:true})
         .then(() => {
           setDataFetched(true);
         })
@@ -91,7 +90,7 @@ const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
         currentUser != null ? (
           <div>
             {!getFireAuthUser ? (
-              <h1
+              <div
                 style={{
                   display: "flex",
                   height: "100vh",
@@ -99,8 +98,8 @@ const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
                   alignItems: "center",
                 }}
               >
-                Loading...
-              </h1>
+                <img alt="Loading Logo" src={loading_logo} style={{height: '100px'}} />
+              </div>
             ) : (
               <div>
                 {!dataFetched ? (

@@ -13,11 +13,7 @@ const yearOptions = [
 const User = () => {
 
     const {
-        currentUser,
-        dataFetched,
         setDataFetched,
-        setGetFireAuthUser,
-        getFireAuthUser,
         currentUserData,
         collegeOptions,
         branchOptions,
@@ -31,7 +27,7 @@ const User = () => {
       } = useContext(AuthContext);
 
       useEffect(() => {
-        if(collegeOptions[0] == undefined){
+        if(collegeOptions[0] === undefined){
           db.collection("colleges")
           .get()
           .then((querySnapshot) => {
@@ -43,18 +39,19 @@ const User = () => {
             
           });
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [])
 
     function onCollegeInputChange(value) {
         setSelectedCollege(value);
     
-        if(branchOptions[0] == undefined){
+        if(branchOptions[0] === undefined){
           var docRef = db.collection("branches").doc(value.value);
           docRef
             .get()
             .then((doc) => {
               if (doc.exists) {
-                doc.data().list.map((branch) => {
+                doc.data().list.forEach((branch) => {
                   branchOptions.push(branch);
                 });
               } else {
@@ -84,11 +81,11 @@ const User = () => {
           setCurrentUserData([selectedCollege, selectedBranch, selectedYear]);
           db.collection("userPreference")
             .doc(auth.currentUser.uid)
-            .update({
+            .set({
               college: selectedCollege,
               branch: selectedBranch,
               year: selectedYear,
-            })
+            },{merge:true})
             .then(() => {
               setDataFetched(true);
               alert("User data updated")
