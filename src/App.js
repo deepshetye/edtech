@@ -1,19 +1,26 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router } from "react-router-dom";
-import Home from "./components/Home";
-import { AuthProvider } from "./Auth";
-import PrivateRoute from "./PrivateRoute";
+import { Switch, Route } from "react-router-dom";
+import {routes} from './routes';
+import Layout from "./hocs/Layout";
 
 const App = () => {
+
   return (
-    <AuthProvider>
-      <Router>
-        <div className="App">
-          <PrivateRoute path="/" component={Home} />
-        </div>
-      </Router>
-    </AuthProvider>
+      <div>
+        <Layout>
+          <Switch>
+            {routes.map((route, index) => (
+              <Route
+                path={route.path}
+                key={index}
+                exact
+                render={(props) => <route.component {...props} /> }
+              />
+            ))}
+          </Switch>
+        </Layout>
+      </div>
   );
 };
 
