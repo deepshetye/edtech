@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import Select from "react-select";
-import { getBranchList, getCollegeList } from '../../axios';
-
-const yearOptions = [
-    { value: "FIRST", label: "First" },
-    { value: "SECOND", label: "Second" },
-    { value: "THIRD", label: "Third" },
-    { value: "FOURTH", label: "Fourth" },
-];
+import { useSelector } from 'react-redux';
+import { getBranchList, getCollegeList, updateUserProfile, getYearList } from '../../axios';
 
 const PreferenceSelector = () => {
 
+    const { user } = useSelector((state) => state.auth);
     const [collegeOptions, setCollegeOptions] = useState([])
     const [branchOptions, setBranchOptions] = useState([])
-    const [selectedCollege, setSelectedCollege] = useState(null)
-    const [selectedBranch, setSelectedBranch] = useState(null)
-    const [selectedYear, setSelectedYear] = useState(null)
+    const [yearOptions, setYearOptions] = useState([])
+    const [userData, setUserData] = useState({
+        "id": user.id,
+        "user_email" : user.email,
+        "user": user,
+        "college": null,
+        "branch": null,
+        "year": null
+    })
 
     useEffect(() => {
         async function fetchCollegeList() {
             const res = await getCollegeList();
-            console.log(res);
             setCollegeOptions(res)
         }
         fetchCollegeList();
@@ -28,26 +28,28 @@ const PreferenceSelector = () => {
 
     async function onCollegeInputChange(value) {
         setBranchOptions([]);
-        setSelectedCollege(value);
+        userData.college = value.value;
         const res = await getBranchList(value.value);
         setBranchOptions(res.branches)
     }
     
-    function onBranchInputChange(value) {
-        setSelectedBranch(value);
+    async function onBranchInputChange(value) {
+        userData.branch = value.value;
+        const res = await getYearList(userData.college);
+        setYearOptions(res.years)
     }
     
     function onYearInputChange(value) {
-        setSelectedYear(value);
+        userData.year = value.value;
     }
     
     function onSubmitButton() {
         if (
-            selectedCollege != null &&
-            selectedBranch != null &&
-            selectedYear != null
+            userData.college != null &&
+            userData.branch != null &&
+            userData.year != null
         ) {
-            console.log("Submit logic here")
+            updateUserProfile(userData);
         } else {
             alert("Please fill in all details");
         }
