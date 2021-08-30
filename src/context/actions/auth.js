@@ -35,7 +35,6 @@ export const load_user = () => async dispatch => {
         try {
             const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/auth/profile/me/`, config);
     
-            console.log(res)
             if(res.data.college === null || res.data.college === null || res.data.college === null) {
                 dispatch({
                     type: USER_ACTIVATED_FAIL,

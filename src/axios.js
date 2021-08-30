@@ -47,5 +47,5 @@ export const updateUserProfile = async (data) => {
   console.log(data)
     await api
       .put(`/auth/profile/me/`, data)
-      .then(window.location.href = "/timetable");
+      .then(console.log("User data updated successfully"));
 }
