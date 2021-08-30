@@ -112,7 +112,7 @@ const Login = ({login, signup, isAuthenticated}) => {
     document.getElementById("container").classList.remove("sign-up-mode");
   };
 
-  if(isAuthenticated) {
+  if(!!isAuthenticated) {
     return <Redirect to='/timetable' />
   }
 
@@ -285,7 +285,7 @@ const Login = ({login, signup, isAuthenticated}) => {
 };
 
 const mapStateProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated,
 })
 
 export default connect(mapStateProps, { login, signup })(Login);

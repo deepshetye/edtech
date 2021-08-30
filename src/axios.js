@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { USER_ACTIVATED_SUCCESS } from './context/actions/types';
 
 const api = axios.create({
     baseURL: process.env.REACT_APP_BASE_URL,
@@ -46,5 +47,5 @@ export const updateUserProfile = async (data) => {
   console.log(data)
     await api
       .put(`/auth/profile/me/`, data)
-      .then(response => console.log(response));
+      .then(window.location.href = "/timetable");
 }
